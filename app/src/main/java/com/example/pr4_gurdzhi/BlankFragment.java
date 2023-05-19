@@ -47,12 +47,12 @@ public class BlankFragment extends Fragment {
         Button button = view.findViewById(R.id.button);
         button.setOnClickListener(v -> getParentFragmentManager().beginTransaction().replace(R.id.fragment_container_view, BlankFragment2.class, null).commit());
 
-        TextView text1 = view.findViewById(R.id.wc1);
-        text1.setText("Добро пожаловать!");
-        TextView text2 = view.findViewById(R.id.wc2);
-        text2.setText("Похоже, что у вас пока нету отеля!");
-        TextView text3 = view.findViewById(R.id.wc3);
-        text3.setText("Нажмите клавишу 'Начать', чтобы перейти на этап регистрации отеля");
+//        TextView text1 = view.findViewById(R.id.wc1);
+  //      text1.setText("Добро пожаловать!");
+    //    TextView text2 = view.findViewById(R.id.wc2);
+      //  text2.setText("Похоже, что у вас пока нету отеля!");
+       // TextView text3 = view.findViewById(R.id.wc3);
+        //text3.setText("Нажмите клавишу 'Начать', чтобы перейти на этап регистрации отеля");
 
         ImageView image = view.findViewById(R.id.bookImage1);
         image.setImageDrawable(getResources().getDrawable(R.drawable.book_svgrepo_com));

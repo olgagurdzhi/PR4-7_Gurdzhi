@@ -68,6 +68,13 @@ public class BlankFragment4 extends Fragment {
                 managerCompat.notify(1, builder.build());
             }
         });
+        Button serviceButton = view.findViewById(R.id.serviceButton);
+        serviceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().startService(new Intent(getActivity(), ApplicationService.class));
+            }
+        });
     }
 
 }

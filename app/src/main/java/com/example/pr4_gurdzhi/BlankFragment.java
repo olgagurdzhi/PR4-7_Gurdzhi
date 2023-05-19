@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,8 +46,12 @@ public class BlankFragment extends Fragment {
             text3.setText("Нет");
         });
         Button button = view.findViewById(R.id.button);
-        button.setOnClickListener(v -> getParentFragmentManager().beginTransaction().replace(R.id.fragment_container_view, BlankFragment2.class, null).commit());
-
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_blankFragment_to_blankFragment2);
+            }
+        });
 
         ImageView image = view.findViewById(R.id.bookImage1);
         image.setImageDrawable(getResources().getDrawable(R.drawable.book_svgrepo_com));

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,13 +46,11 @@ public class BlankFragment2 extends Fragment {
         });
 
         Button button2 = view.findViewById(R.id.buttonToList2);
-        button2.setOnClickListener(v -> {
-            Bundle result = new Bundle();
-            result.putString("bundleKey", String.valueOf(randomNumber));
-            getParentFragmentManager().setFragmentResult("requestKey", result);
-            getParentFragmentManager().beginTransaction().replace(R.id.fragment_container_view,
-                            BlankFragment4.class, null)
-                    .commit();
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_blankFragment2_to_blankFragment3);
+            }
         });
 
 

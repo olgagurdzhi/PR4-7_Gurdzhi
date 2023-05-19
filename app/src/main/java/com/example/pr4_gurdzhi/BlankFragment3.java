@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
 
@@ -58,10 +59,7 @@ import java.util.ArrayList;
                         @Override
                         public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                            BookInfo selectedState = (BookInfo) parent.getItemAtPosition(position);
-                            Toast.makeText(getContext(), "Был выбран пункт " + selectedState.getName(),
-                                    Toast.LENGTH_SHORT).show();
-                            Log.i("TAG", "Был выбран пункт: " + selectedState.getName());
+                            Navigation.findNavController(view).navigate(R.id.action_blankFragment3_to_blankFragment2);
                         }
                     };
                     countriesList.setOnItemClickListener(itemListener);

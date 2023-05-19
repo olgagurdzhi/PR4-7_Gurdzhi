@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class BlankFragment4 extends Fragment {
@@ -38,13 +39,15 @@ public class BlankFragment4 extends Fragment {
         setInitialData();
         setInitialData();
         RecyclerView recyclerView = view.findViewById(R.id.list);
+        String str = getArguments().getString("key1");
+        Toast.makeText(getContext(), "Добро пожаловать, " + str, Toast.LENGTH_SHORT).show();
         BookRecycleAdapter.OnBookClickListener bookClickListener = new BookRecycleAdapter.OnBookClickListener() {
             @Override
             public void onBookClick(BookInfo state, int position) {
 
-                Toast.makeText(getContext(), "Был выбран пункт " + state.getName(),
-                        Toast.LENGTH_SHORT).show();
-                Log.i("TAG", "Был выбран пункт: " + state.getName());
+                Bundle bundle = new Bundle();
+                bundle.putString("key2", state.getName());
+                Navigation.findNavController(view).navigate(R.id.action_blankFragment3_to_blankFragment2, bundle);
             }
         };
         BookRecycleAdapter adapter = new BookRecycleAdapter(getContext(), books, bookClickListener);

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,11 @@ public class BlankFragment2 extends Fragment {
         TextView ticket = view.findViewById(R.id.ticket);
         ticket.setText(String.valueOf(randomNumber));
 
+        EditText text = view.findViewById(R.id.editTextTextPersonName);
+
+        String str = getArguments().getString("key2");
+        Toast.makeText(getContext(), "Вы выбрали книгу " + str, Toast.LENGTH_SHORT).show();
+
         Button button = view.findViewById(R.id.buttonToList1);
         button.setOnClickListener(v -> {
             Bundle result = new Bundle();
@@ -49,7 +55,9 @@ public class BlankFragment2 extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_blankFragment2_to_blankFragment3);
+                Bundle bundle = new Bundle();
+                bundle.putString("key1", String.valueOf(text.getEditableText()));
+                Navigation.findNavController(view).navigate(R.id.action_blankFragment2_to_blankFragment4, bundle);
             }
         });
 

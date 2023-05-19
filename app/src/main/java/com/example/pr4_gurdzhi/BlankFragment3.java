@@ -57,11 +57,9 @@ import java.util.ArrayList;
                 }
                 private void setInitialData(){
 
-                    books.add(new BookInfo ("Отель1", R.drawable.book_svgrepo_com));
-                    books.add(new BookInfo ("Отель2", R.drawable.book_svgrepo_com));
-                    books.add(new BookInfo ("Отель3", R.drawable.book_svgrepo_com));
-                    books.add(new BookInfo ("Отель4", R.drawable.book_svgrepo_com));
-                    books.add(new BookInfo ("Отель5", R.drawable.book_svgrepo_com));
+                    private void setInitialData(){
+                        for(int i=1; i<=200;i++){
+                            books.add(new BookInfo (String.valueOf(i), R.drawable.book_svgrepo_com));
                 }
 
 

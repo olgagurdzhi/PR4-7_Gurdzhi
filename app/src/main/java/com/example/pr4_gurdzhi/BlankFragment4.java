@@ -1,65 +1,73 @@
 package com.example.pr4_gurdzhi;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class BlankFragment4 extends Fragment {
     private Context context;
-    private final int duration = Toast.LENGTH_SHORT;
+    private NotificationManager notificationManager;
+    private static final int NOTIFY_ID = 1;
+
+    private static String CHANNEL_ID = "CHANNEL_ID";
+
     private static final String TAG = "BlankFragment4";
+
     public BlankFragment4() {
         super(R.layout.fragment_blank4);
     }
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_blank4, container, false);
     }
 
-    ArrayList<BookInfo> books = new ArrayList<BookInfo>();
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setInitialData();
-        setInitialData();
-        RecyclerView recyclerView = view.findViewById(R.id.list);
-        String str = getArguments().getString("key1");
-        Toast.makeText(getContext(), "Добро пожаловать, " + str, Toast.LENGTH_SHORT).show();
-        BookRecycleAdapter.OnBookClickListener bookClickListener = new BookRecycleAdapter.OnBookClickListener() {
-            @Override
-            public void onBookClick(BookInfo state, int position) {
+        TextView text1 = view.findViewById(R.id.bookingNum);
+        String bookName = getArguments().getString("bookerName");
+        text1.setText("Название: " + bookName);
+        TextView text2 = view.findViewById(R.id.booker);
+        text2.setText("Автор: " + getArguments().getString("author"));
 
-                Bundle bundle = new Bundle();
-                bundle.putString("key2", state.getName());
-                Navigation.findNavController(view).navigate(R.id.action_blankFragment3_to_blankFragment2, bundle);
-            }
-        };
-        BookRecycleAdapter adapter = new BookRecycleAdapter(getContext(), books, bookClickListener);
-        recyclerView.setAdapter(adapter);
-    }
-
-
-    private void setInitialData(){
-
-        for(int i=1; i<=200;i++){
-            books.add(new BookInfo (String.valueOf(i), R.drawable.book_svgrepo_com));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getContext().getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
         }
+
+        Button addButton = view.findViewById(R.id.addButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "My Notification");
+                builder.setSmallIcon(R.drawable.book_svgrepo_com);
+                builder.setContentTitle("My Title");
+                builder.setContentText("Hello");
+                builder.setAutoCancel(true);
+                //.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext());
+                managerCompat.notify(1, builder.build());
+            }
+        });
     }
 
-    }
+}

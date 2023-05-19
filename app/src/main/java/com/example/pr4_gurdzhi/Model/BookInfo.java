@@ -1,4 +1,4 @@
-package com.example.pr4_gurdzhi;
+package com.example.pr4_gurdzhi.Model;
 
 public class BookInfo {
     private String name;
@@ -6,7 +6,6 @@ public class BookInfo {
     private int pictureResource;
 
     public BookInfo(String name, int pic){
-
         this.name=name;
         this.pictureResource=pic;
     }

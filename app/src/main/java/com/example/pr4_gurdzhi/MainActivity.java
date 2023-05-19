@@ -1,13 +1,11 @@
 package com.example.pr4_gurdzhi;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+
+import com.example.pr4_gurdzhi.UserInterface.BlankFragment;
+import com.example.pr4_gurdzhi.UserInterface.BlankFragment2;
 
 public class MainActivity extends AppCompatActivity {
     private BlankFragment blank = new BlankFragment();

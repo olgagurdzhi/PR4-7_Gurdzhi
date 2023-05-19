@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.pr4_gurdzhi.Model.BookInfo;
+
 import java.util.List;
 
 public class BookAdapter extends ArrayAdapter<BookInfo> {

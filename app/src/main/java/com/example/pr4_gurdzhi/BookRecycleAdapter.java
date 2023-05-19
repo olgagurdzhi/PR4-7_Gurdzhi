@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pr4_gurdzhi.Model.BookInfo;
+
 import java.util.List;
 
 public class BookRecycleAdapter  extends RecyclerView.Adapter<BookRecycleAdapter.ViewHolder>{

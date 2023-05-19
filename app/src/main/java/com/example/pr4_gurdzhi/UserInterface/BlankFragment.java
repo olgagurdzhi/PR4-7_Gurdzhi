@@ -1,4 +1,4 @@
-package com.example.pr4_gurdzhi;
+package com.example.pr4_gurdzhi.UserInterface;
 
 import static android.content.ContentValues.TAG;
 
@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.pr4_gurdzhi.R;
 
 public class BlankFragment extends Fragment {
 

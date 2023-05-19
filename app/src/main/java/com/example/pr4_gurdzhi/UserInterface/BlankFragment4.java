@@ -1,4 +1,4 @@
-package com.example.pr4_gurdzhi;
+package com.example.pr4_gurdzhi.UserInterface;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
@@ -18,6 +18,9 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+
+import com.example.pr4_gurdzhi.ApplicationService;
+import com.example.pr4_gurdzhi.R;
 
 public class BlankFragment4 extends Fragment {
     private Context context;

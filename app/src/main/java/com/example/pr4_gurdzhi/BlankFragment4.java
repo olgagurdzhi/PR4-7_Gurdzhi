@@ -38,7 +38,16 @@ public class BlankFragment4 extends Fragment {
         setInitialData();
         setInitialData();
         RecyclerView recyclerView = view.findViewById(R.id.list);
-        BookRecycleAdapter adapter = new BookRecycleAdapter(getContext(), books);
+        BookRecycleAdapter.OnBookClickListener bookClickListener = new BookRecycleAdapter.OnBookClickListener() {
+            @Override
+            public void onBookClick(BookInfo state, int position) {
+
+                Toast.makeText(getContext(), "Был выбран пункт " + state.getName(),
+                        Toast.LENGTH_SHORT).show();
+                Log.i("TAG", "Был выбран пункт: " + state.getName());
+            }
+        };
+        BookRecycleAdapter adapter = new BookRecycleAdapter(getContext(), books, bookClickListener);
         recyclerView.setAdapter(adapter);
     }
 

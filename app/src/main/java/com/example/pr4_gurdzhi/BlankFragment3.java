@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,17 @@ import java.util.ArrayList;
                     BookAdapter bookAdapter = new BookAdapter(getContext(), R.layout.list_item, books);
 
                     countriesList.setAdapter(bookAdapter);
+                    AdapterView.OnItemClickListener itemListener = new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
+                            BookInfo selectedState = (BookInfo) parent.getItemAtPosition(position);
+                            Toast.makeText(getContext(), "Был выбран пункт " + selectedState.getName(),
+                                    Toast.LENGTH_SHORT).show();
+                            Log.i("TAG", "Был выбран пункт: " + selectedState.getName());
+                        }
+                    };
+                    countriesList.setOnItemClickListener(itemListener);
                 }
                 private void setInitialData(){
 

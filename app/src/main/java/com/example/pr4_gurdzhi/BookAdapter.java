@@ -42,3 +42,4 @@ public class BookAdapter extends ArrayAdapter<BookInfo> {
         return view;
     }
 }
+

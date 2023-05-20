@@ -52,13 +52,10 @@ public class BlankFragment2 extends Fragment {
         });
 
         Button button2 = view.findViewById(R.id.buttonToList2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("key1", String.valueOf(text.getEditableText()));
-                Navigation.findNavController(view).navigate(R.id.action_blankFragment2_to_blankFragment4, bundle);
-            }
+        button2.setOnClickListener(view1 -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("key1", String.valueOf(text.getEditableText()));
+            Navigation.findNavController(view1).navigate(R.id.action_blankFragment2_to_blankFragment3, bundle);
         });
 
 

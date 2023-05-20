@@ -2,6 +2,7 @@ package com.example.pr4_gurdzhi.UserInterface;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -38,25 +39,21 @@ public class BlankFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getParentFragmentManager().setFragmentResultListener("requestKey", this, (key, bundle) -> {
-            String result = bundle.getString("bundleKey");
-            TextView text1 = (TextView) getView().findViewById(R.id.wc1);
-            text1.setText(result);
-            TextView text2 = (TextView) getView().findViewById(R.id.wc2);
-            text2.setText("Да");
-            TextView text3 = (TextView) getView().findViewById(R.id.wc3);
-            text3.setText("Нет");
-        });
-        Button button = view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_blankFragment_to_blankFragment2);
-            }
-        });
+        @SuppressLint("UseCompatLoadingForDrawables")
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
 
-        ImageView image = view.findViewById(R.id.bookImage1);
-        image.setImageDrawable(getResources().getDrawable(R.drawable.book_svgrepo_com));
+            Button button = view.findViewById(R.id.button);
+            button.setOnClickListener(view1 -> Navigation.findNavController(view1).navigate(R.id.action_blankFragment_to_blankFragment2));
+
+            Button buttonLib = view.findViewById(R.id.lib_button);
+            buttonLib.setOnClickListener(view12 -> Navigation.findNavController(view12).navigate(R.id.action_blankFragment_to_libraryFragment));
+
+            ImageView image = view.findViewById(R.id.bookImage1);
+            image.setImageDrawable(getResources().getDrawable(R.drawable.book_svgrepo_com));
+
+        }
 
     }
 }

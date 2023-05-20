@@ -27,3 +27,4 @@ public class BookInfo {
         this.pictureResource = pictureResource;
     }
 }
+

@@ -8,8 +8,7 @@ import com.example.pr4_gurdzhi.UserInterface.BlankFragment;
 import com.example.pr4_gurdzhi.UserInterface.BlankFragment2;
 
 public class MainActivity extends AppCompatActivity {
-    private BlankFragment blank = new BlankFragment();
-    private BlankFragment2 blank2 = new BlankFragment2();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

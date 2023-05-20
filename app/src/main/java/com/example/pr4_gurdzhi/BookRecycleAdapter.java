@@ -1,5 +1,6 @@
 package com.example.pr4_gurdzhi;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,20 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pr4_gurdzhi.Model.BookInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookRecycleAdapter  extends RecyclerView.Adapter<BookRecycleAdapter.ViewHolder>{
-    interface OnBookClickListener{
+    public interface OnBookClickListener{
         void onBookClick(BookInfo book, int position);
     }
     private final OnBookClickListener onClickListener;
 
     private final LayoutInflater inflater;
-    private final List<BookInfo> books;
-
-    BookRecycleAdapter(Context context, List<BookInfo> books, OnBookClickListener onClickListener) {
+    public List<BookInfo> books;
+    public BookRecycleAdapter(Context context,  OnBookClickListener onClickListener) {
         this.onClickListener = onClickListener;
-        this.books = books;
+        this.books = new ArrayList<>();
         this.inflater = LayoutInflater.from(context);
     }
     @Override
@@ -35,7 +36,7 @@ public class BookRecycleAdapter  extends RecyclerView.Adapter<BookRecycleAdapter
     }
 
     @Override
-    public void onBindViewHolder(BookRecycleAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         BookInfo book = books.get(position);
         holder.picView.setImageResource(book.getPictureResource());
         holder.nameView.setText(book.getName());
@@ -46,6 +47,13 @@ public class BookRecycleAdapter  extends RecyclerView.Adapter<BookRecycleAdapter
                 onClickListener.onBookClick(book, position);
             }
         });
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void update(final List<BookInfo> books) {
+        this.books.clear();
+        this.books = books;
+        notifyDataSetChanged();
     }
 
     @Override
